@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dx2reyra6oou1"]
+
+[ext_resource type="Script" uid="uid://ctm7cfdr0t6fc" path="res://script/big_door.gd" id="1_04wtq"]
+[ext_resource type="Texture2D" uid="uid://yyuwm0lm7vkw" path="res://sprites/calcsprite.png" id="2_p1xxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f340y"]
+size = Vector2(32, 31.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh2v5"]
+atlas = ExtResource("2_p1xxm")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg3r7"]
+atlas = ExtResource("2_p1xxm")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfosh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh2v5")
+}],
+"loop": false,
+"name": &"big_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg3r7")
+}],
+"loop": false,
+"name": &"big_open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_300or"]
+size = Vector2(41.5, 39.25)
+
+[node name="bigDoor" type="Area2D"]
+script = ExtResource("1_04wtq")
+door_id = "1"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -1.25)
+shape = SubResource("RectangleShape2D_f340y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_tfosh")
+animation = &"big_close"
+autoplay = "big_close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_300or")

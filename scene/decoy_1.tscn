@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch83gky7rdlnu"]
+
+[ext_resource type="Script" uid="uid://dealod5aalmje" path="res://script/decoy_1.gd" id="1_tvpnm"]
+[ext_resource type="Texture2D" uid="uid://yyuwm0lm7vkw" path="res://sprites/calcsprite.png" id="2_rj73t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m51k"]
+atlas = ExtResource("2_rj73t")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ratuu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m51k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sffpg"]
+radius = 4.1231055
+
+[node name="Decoy_1" type="Area2D"]
+script = ExtResource("1_tvpnm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ratuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_sffpg")

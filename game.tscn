@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cht5x2cxeiwma"]
+
+[ext_resource type="PackedScene" uid="uid://sgfo71kisuer" path="res://knight.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://pf6puwwgqkxe" path="res://scene/world.tscn" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://dk2u826aan48p" path="res://scene/doors.tscn" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://pmic4m786br3" path="res://scene/key.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://hxdnd5cdf8rh" path="res://scene/solution_1.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ch83gky7rdlnu" path="res://scene/decoy_1.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://dx2reyra6oou1" path="res://scene/big_door.tscn" id="6_eow3j"]
+[ext_resource type="PackedScene" uid="uid://6fdhast4mau3" path="res://scene/solution_2.tscn" id="8_j5wjh"]
+
+[node name="Game" type="Node2D"]
+
+[node name="World" parent="." instance=ExtResource("1_fc0e3")]
+position = Vector2(-1, -18)
+
+[node name="Doors" parent="." instance=ExtResource("2_fc0e3")]
+position = Vector2(273, -82)
+
+[node name="Doors2" parent="." instance=ExtResource("2_fc0e3")]
+position = Vector2(242, -210)
+
+[node name="bigDoor" parent="." instance=ExtResource("6_eow3j")]
+position = Vector2(-221, -95)
+
+[node name="bigDoor2" parent="." instance=ExtResource("6_eow3j")]
+position = Vector2(-136, -147)
+door_id = "2"
+
+[node name="Knight" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(3, -12)
+
+[node name="Camera2D" type="Camera2D" parent="Knight"]
+position = Vector2(0, 4)
+zoom = Vector2(4, 4)
+
+[node name="Key" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_feb5d")]
+position = Vector2(357, 13)
+player = NodePath("../Knight")
+
+[node name="Key3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_feb5d")]
+position = Vector2(314, -137)
+player = NodePath("../Knight")
+
+[node name="Solution1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_fc0e3")]
+position = Vector2(133, 12)
+player = NodePath("../Knight")
+key_id = "1"
+
+[node name="Decoy_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_7jktm")]
+position = Vector2(257, 21)
+player = NodePath("../Knight")
+
+[node name="Solution2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_j5wjh")]
+position = Vector2(-300, 3)
+player = NodePath("../Knight")
+key_id = "2"
